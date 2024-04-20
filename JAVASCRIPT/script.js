@@ -81,20 +81,35 @@ document.getElementById("printButton").addEventListener("click", function () {
   newWindow.document.write('<p>Total Bill: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₹' + (total).toFixed(2) + '</p>');
   newWindow.document.write('<p>At 10% Off:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₹' + (total - (total * 0.1)).toFixed(2) + '</p>');
   newWindow.document.write('<h2>---------------------------</h2>');
-  newWindow.document.write('<h2>You need to pay: ₹' + (total - (total * 0.1)).toFixed(2) + '</h2>');
+  newWindow.document.write('<h2>You need to pay: ₹ ' + (total - (total * 0.1)).toFixed(2) + '</h2>');
   newWindow.document.close();
   newWindow.print();
 });
 
-// CART SCRIPT
+// THANK YOU FUNCTION
+
+function thankYou() {
+  document.getElementById('message').innerHTML = `Thankyou for choosing us.!! Your booking is confirmed now.`
+}
+
+
+// CART AND FAVOURITES
 
 let cart = [];
+let like = [];
 let total = 0;
+let previousCart = [];
+let previousLike = [];
 
 function addToCart(item, price) {
   cart.push({ item: item, price: price });
   total += price;
   updateCartUI();
+}
+
+function addToLike(item, price) {
+  like.push({ item: item, price: price });
+  updateLikeUI();
 }
 
 function updateCartUI() {
@@ -105,7 +120,6 @@ function updateCartUI() {
   cart.forEach(item => {
     const li = document.createElement('li');
     li.textContent = `${item.item} - ₹ ${item.price}`;
-    li.id = "listOfItems"
     li.setAttribute("style", "color: var(--black); border: 2px solid black; list-style: none; width: 95%; border-radius:.5rem; margin: 1rem; box-shadow:  .5rem .5rem .5rem rgba(0, 0, 0, .5); height:3.8rem; font-size: 2rem; display:flex; justify-content:center; align-items: center;background-color:#b2f3b2; font-weight:bold");
     cartItemsElement.appendChild(li);
   });
@@ -113,49 +127,48 @@ function updateCartUI() {
   totalElement.textContent = `Your total bill = ₹ ${(total).toFixed(2)}`;
   document.getElementById('disctotal').innerHTML = `Flat 10% discount offer Total = ₹ (${(total - (total * 0.1)).toFixed(2)})`;
   document.getElementById('length').innerHTML = `(${cart.length})`;
-
 }
 
-// LIKE SCRIPT
+function updateLikeUI() {
+  const likeItemsElement = document.getElementById('like-items');
 
-let like = [];
-
-function addToLike(item, price) {
-  like.push({ item: item, price: price });
-  updateCartUI();
-}
-
-function updateCartUI() {
-  const cartItemsElement = document.getElementById('like-items');
-
-  cartItemsElement.innerHTML = '';
+  likeItemsElement.innerHTML = '';
   like.forEach(item => {
     const li = document.createElement('li');
     li.textContent = `${item.item} - ₹ ${item.price}`;
-    li.id = "listOfItems"
+
     li.setAttribute("style", "color: var(--black); border: 2px solid black; list-style: none; width: 95%; border-radius:.5rem; margin: 1rem; box-shadow:  .5rem .5rem .5rem rgba(0, 0, 0, .5); height:3.8rem; font-size: 2rem; display:flex; justify-content:center; align-items: center;background-color:#b2f3b2; font-weight:bold");
-    cartItemsElement.appendChild(li);
+
+    likeItemsElement.appendChild(li);
     document.getElementById('lengthOfLike').innerHTML = `(${like.length})`;
   });
-
 }
-
-// THANK YOU
-
-function thankYou() {
-  document.getElementById('message').innerHTML = `Thankyou for choosing us.!! Your booking is confirmed now.`
-}
-
-// SWITCHING B/W LIKE AND CART AND CLOSE BUTTON
 
 function showDescription(id) {
-  var descriptions = document.getElementsByClassName("description");
-  for (var i = 0; i < descriptions.length; i++) {
-    descriptions[i].style.display = "none";
+  const descriptions = document.querySelectorAll('.description');
+  descriptions.forEach(description => {
+    if (description.id === id) {
+      description.style.display = 'block';
+    } else {
+      description.style.display = 'none';
+    }
+  });
+
+  if (id === 'description1') {
+    previousLike = [...like]; 
+  } else {
+    previousCart = [...cart]; 
   }
-  document.getElementById(id).style.display = "block";
 }
 
 function closeDescription(id) {
-  document.getElementById(id).style.display = "none";
+  document.getElementById(id).style.display = 'none';
+  
+  if (id === 'description1') {
+    like = [...previousLike];
+    updateLikeUI();
+  } else {
+    cart = [...previousCart];
+    updateCartUI();
+  }
 }
