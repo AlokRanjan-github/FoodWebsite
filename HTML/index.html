@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www.MyOnlineMeals.com</title>
+
+    <!-- css file for font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- own css file -->
+    <link rel="stylesheet" href="../CSS/style.css">
+
+    <!-- slider -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+</head>
+
+<body>
+
+    <!-- header -->
+    <header>
+        <div id="logoimg">
+            <img src="../IMG/logo.png" alt="">
+            <a href="#" class="logo"><i class="fas fa-untensils"></i>SillySizzleSpot</a>
+        </div>
+        <nav class="navbar">
+            <a class="active" href="#home">Home</a>
+            <a href="#dishes">Dishes</a>
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+            <a href="#review">Review</a>
+            <a href="#order">Reservation</a>
+        </nav>
+        <div class="icons">
+            <i class="fas fa-bars" id="menu-bars"></i>
+            <i class="fas fa-search" id="search-icon"></i>
+
+            <a href="#" onclick="showDescription('description2')" class="fas fa-heart" ><span id="lengthOfLike" style="font-size: 1.2rem;"></span></a>
+
+            <a href="#" onclick="showDescription('description1')"class="fas fa-shopping-cart"><span id="length" style="font-size: 1.2rem;"></span></a>
+
+        </div>
+    </header>
+
+    <!-- search form -->
+
+    <form action="" id="search-form">
+        <input type="search" placeholder="Search here..." name="" id="search-box">
+        <label for="search-box" class="fas fa-search"></label>
+        <i class="fas fa-times" id="close"></i>
+    </form>
+
+
+    <!-- Cart section -->
+
+    <div id="description1" class="description cart-section" >
+        <span class="close-btn" onclick="closeDescription('description1')">&times;</span>
+        <h1 class="sub-heading">Welcome to</h1>
+        <h1 class="heading">Cart Section</h1>
+
+        <div id="cart">
+            <ul id="cart-items">
+                <!-- Cart items will be added here dynamically -->
+            </ul>
+            <p><span id="total"></span><br><span id="disctotal" style="font-weight: bold;"></span></p>
+        </div>
+        <div class="payment">
+            <button class="btn">pay now</button>
+            <button class="btn" id="printButton">print now</button>
+
+        </div>
+    </div>
+
+    <!-- Like section -->
+
+    <div id="description2" class="description like-section">
+        <span class="close-btn" onclick="closeDescription('description2')">&times;</span>
+        <h1 class="sub-heading">your</h1>
+        <h1 class="heading">favourite items</h1>
+
+        <div id="liked">
+            <ul id="like-items">
+                <!-- Cart items will be added here dynamically -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- home-section -->
+
+    <section class="home" id="home">
+
+        <div class="swiper mySwiper home-slider">
+
+            <div class="swiper-wrapper wrapper">
+
+                <div class="swiper-slide slide">
+                    <div class="content">
+                        <span>our special dish</span>
+                        <h3>spicy noodles</h3>
+                        <p>"Indulge in our special spicy noodle dish, featuring tantalizing flavors and a fiery kick,
+                            sure to satisfy your taste buds.!"<br><b>At Just ₹ 99.99</b></p>
+                        <a href="#" class="btn" onclick="addToCart('Spicy Noodles', 99.99)">order now</a>
+                    </div>
+                    <div class="image">
+                        <img src="../IMG/img1.png" alt="image loading">
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <div class="content">
+                        <span>our special dish</span>
+                        <h3>fried chicken</h3>
+                        <p>"Indulge in our signature fried chicken, expertly seasoned and fried to crispy perfection.
+                            Each bite bursts with juicy tenderness, making it a mouthwatering delight for any fried
+                            chicken enthusiast.!"<br><b>At Just ₹ 299.90</b></p>
+                        <a href="#" class="btn" onclick="addToCart('fried chicken', 299.90)">order now</a>
+                    </div>
+                    <div class="image">
+                        <img src="../IMG/img2.webp" alt="image loading">
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <div class="content">
+                        <span>our special dish</span>
+                        <h3>hot pizza</h3>
+                        <p>"Indulge in our sizzling hot and spicy pizza, crafted with premium ingredients and fiery
+                            spices to ignite your taste buds. A fiery feast guaranteed to satisfy your craving for bold
+                            flavors.!"<br><b>At Just ₹ 459.90</b></p>
+                        <a href="#" class="btn" onclick="addToCart('fried chicken', 459.90)">order now</a>
+                    </div>
+                    <div class="image">
+                        <img src="../IMG/img3.webp" alt="image loading">
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+
+
+    <!-- dishes section  -->
+
+    <section class="dishes" id="dishes">
+        <h3 class="sub-heading"> our dishes </h3>
+        <h1 class="heading"> popular dishes </h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <a href="#" class="fas fa-heart" onclick="addToLike('Classic Cheese burger', 99.89)"></a>
+                <a href="#" class="fas fa-eye"></a>
+                <img src="../IMG/dish1.jpg" alt="">
+                <h3>Classic Cheese burger</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span>₹99.89</span>
+                <a href="#" class="btn" onclick="addToCart('Classic Cheese burger', 99.89)">add to cart</a>
+            </div>
+
+            <div class="box">
+                <a href="#" class="fas fa-heart" onclick="addToLike('Chicken Biryani', 149.89)"></a>
+                <a href="#" class="fas fa-eye"></a>
+                <img src="../IMG/dish2.jpg" alt="">
+                <h3>Chicken Biryani</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span>₹149.89</span>
+                <a href="#" class="btn" onclick="addToCart('Chicken Biryani', 149.89)">add to cart</a>
+            </div>
+
+            <div class="box">
+                <a href="#" class="fas fa-heart" onclick="addToLike('Fried Spring Roll', 79.89)"></a>
+                <a href="#" class="fas fa-eye"></a>
+                <img src="../IMG/dish3.webp" alt="">
+                <h3>Fried Spring Roll</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span>₹79.89</span>
+                <a href="#" class="btn" onclick="addToCart('Fried Spring Roll', 79.89)">add to cart</a>
+            </div>
+
+            <div class="box">
+                <a href="#" class="fas fa-heart" onclick="addToLike('Veg Samosa Ketchup', 59.89)"></a>
+                <a href="#" class="fas fa-eye"></a>
+                <img src="../IMG/dish4.jpg" alt="">
+                <h3>Veg Samosa Ketchup</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span>₹59.89</span>
+                <a href="#" class="btn" onclick="addToCart('Veg Samosa Ketchup', 59.89)">add to cart</a>
+            </div>
+
+            <div class="box">
+                <a href="#" class="fas fa-heart" onclick="addToLike('Black Forest Cake', 199.89)"></a>
+                <a href="#" class="fas fa-eye"></a>
+                <img src="../IMG/dish5.webp" alt="">
+                <h3>Black Forest Cake</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span>₹199.89</span>
+                <a href="#" class="btn" onclick="addToCart('Black Forest Cake', 199.89)">add to cart</a>
+            </div>
+
+            <div class="box">
+                <a href="#" class="fas fa-heart" onclick="addToLike('French Potato Fries', 94.89)"></a>
+                <a href="#" class="fas fa-eye"></a>
+                <img src="../IMG/dish6.png" alt="">
+                <h3>French Potato Fries</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span>₹94.89</span>
+                <a href="#" class="btn" onclick="addToCart('French Potato Fries', 94.89)">add to cart</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- dishes section ENDS  -->
+
+    <!-- about section STARTS -->
+
+    <section class="about" id="about">
+        <h3 class="sub-heading"> about us </h3>
+        <h1 class="heading"> why choose us? </h1>
+
+        <div class="row">
+            <div class="image">
+                <img src="../IMG/aboutUs.jpg" alt="">
+            </div>
+
+            <div class="content">
+                <h3>best food in the country</h3>
+                <p>Welcome to <b>SillySizzleSpot</b>, your ultimate dining destination where convenience meets culinary
+                    excellence. Our commitment to customer satisfaction extends beyond the dining experience, offering a
+                    range of facilities tailored to enhance your convenience. Enjoy the luxury of <b>free doorstep
+                        delivery</b>, where our delectable dishes are just a click away, ensuring that you can savor our
+                    flavors from the comfort of your own home.</p>
+
+                <p>At <b>SillySizzleSpot</b>, we prioritize your convenience with <b>easy payment options</b> designed
+                    to streamline your dining experience. Whether you prefer cashless transactions or traditional
+                    payment methods, we offer a hassle-free payment process to suit your preferences. Additionally, our
+                    commitment to customer satisfaction extends to our <b>24/7 services</b>, ensuring that you can
+                    indulge in our culinary delights at any hour of the day or night. </p>
+                <div class="icons-container">
+
+                    <div class="icons">
+                        <i class="fas fa-shipping-fast"></i>
+                        <span>free delivery</span>
+                    </div>
+
+                    <div class="icons">
+                        <div id="rupee">&#8377;</div>
+                        <span>easy payments</span>
+                    </div>
+
+                    <div class="icons">
+                        <i class="fas fa-headset"></i>
+                        <span>24/7 service </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- about section ENDS -->
+
+    <!-- MENU section STARTS -->
+    <section class="menu" id="menu">
+
+        <h3 class="sub-heading"> our menu </h3>
+        <h1 class="heading"> today's speciality </h1>
+
+        <div class="box-container">
+
+            <div class="box">
+
+                <div class="image">
+                    <img src="../IMG/menu1.jpg" alt="">
+                    <a href="#" class="fas fa-heart" onclick="addToLike('Fruit Fusion Delight', 99.99)"></a>
+                </div>
+
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <h3>Fruit Fusion Delight</h3>
+                    <p>"a tantalizing concoction of nature's finest fruits  blended to create symphony of flavors.</p>
+                    <a href="#" class="btn" onclick="addToCart('Fruit Fusion Delight', 99.99)">add to cart</a>
+                    <span class="price">₹49.99</span>
+                </div>
+            </div>
+            <div class="box">
+
+                <div class="image">
+                    <img src="../IMG/menu2.jpg" alt="">
+                    <a href="#" class="fas fa-heart" onclick="addToLike('Cold FaludaFiesta', 60.00)"></a>
+                </div>
+
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Cold FaludaFiesta</h3>
+                    <p>"Frosty layers of faluda, creamy ice cream, and exotic flavors."</p>
+                    <a href="#" class="btn" onclick="addToCart('Cold FaludaFiesta', 60.00)">add to cart</a>
+                    <span class="price">₹60.00</span>
+                </div>
+            </div>
+            <div class="box">
+
+                <div class="image">
+                    <img src="../IMG/menu3.jpg" alt="">
+                    <a href="#" class="fas fa-heart" onclick="addToLike('icy Scoopful Delights',100.00)"></a>
+                </div>
+
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>icy Scoopful Delights</h3>
+                    <p>"Rich, creamy indulgence in every scoop, a delightful frozen treat."</p>
+                    <a href="#" class="btn" onclick="addToCart('icy Scoopful Delights', 100.00)">add to cart</a>
+                    <span class="price">₹100.00</span>
+                </div>
+            </div>
+            <div class="box">
+
+                <div class="image">
+                    <img src="../IMG/menu4.webp" alt="">
+                    <a href="#" class="fas fa-heart" onclick="addToLike('BlissfulBhojan Thali',199.99)"></a>
+                </div>
+
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <h3>BlissfulBhojan Thali</h3>
+                    <p>"Experience divine flavors in our BlissfulBhojan Thali: a culinary journey.</p>
+                    <a href="#" class="btn" onclick="addToCart('BlissfulBhojan Thali', 199.99)">add to cart</a>
+                    <span class="price">₹199.99</span>
+                </div>
+            </div>
+            <div class="box">
+
+                <div class="image">
+                    <img src="../IMG/menu5.jpeg" alt="">
+                    <a href="#" class="fas fa-heart" onclick="addToLike('South Indian dosa & dips', 120.00)"></a>
+                </div>
+
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <h3>South Indian dosa & dips</h3>
+                    <p>Crispy, golden dosa: South Indian staple; versatile, flavorful, satisfying delight.</p>
+                    <a href="#" class="btn" onclick="addToCart('South Indian dosa & dips', 120.00)">add to cart</a>
+                    <span class="price">₹120.00</span>
+                </div>
+            </div>
+            <div class="box">
+
+                <div class="image">
+                    <img src="../IMG/menu6.jpg" alt="">
+                    <a href="#" class="fas fa-heart" onclick="addToLike('Golden Thread Noodles', 149.99)"></a>
+                </div>
+
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <h3>Golden Thread Noodles</h3>
+                    <p>Thin, delicate strands; silky texture; versatile in stir-fries</p>
+                    <a href="#" class="btn" onclick="addToCart('Golden Thread Noodles', 149.99)">add to cart</a>
+                    <span class="price">₹149.99</span>
+                </div>
+            </div>
+            <div class="box">
+
+                <div class="image">
+                    <img src="../IMG/menu7.webp" alt="">
+                    <a href="#" class="fas fa-heart" onclick="addToLike('mixed indian sweet desert', 150.00)"></a>
+                </div>
+
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <h3>mixed indian sweet desert</h3>
+                    <p>"with idea of combining various Indian sweets into one delectable dessert."</p>
+                    <a href="#" class="btn" onclick="addToCart('mixed indian sweet desert', 150.00)">add to cart</a>
+                    <span class="price">₹150.00</span>
+                </div>
+            </div>
+            <div class="box">
+
+                <div class="image">
+                    <img src="../IMG/menu8.webp" alt="">
+                    <a href="#" class="fas fa-heart" onclick="addToLike('Jalebi Jubilee', 79.99)"></a>
+                </div>
+
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <h3>Jalebi Jubilee</h3>
+                    <p>"Crispy, syrupy swirls in a festive, sweet celebration."</p>
+                    <a href="#" class="btn" onclick="addToCart('Jalebi Jubilee', 79.99)">add to cart</a>
+                    <span class="price">₹79.99</span>
+                </div>
+            </div>
+            <div class="box">
+
+                <div class="image">
+                    <img src="../IMG/menu9.jpg" alt="">
+                    <a href="#" class="fas fa-heart"  onclick="addToLike('Jalebi Jubilee', 90.00)"></a>
+                </div>
+
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <h3>Gulab Jamun Glaze</h3>
+                    <p>"Soft, syrupy spheres of indulgent sweetness."</p>
+                    <a href="#" class="btn" onclick="addToCart('Jalebi Jubilee', 90.00)">add to cart</a>
+                    <span class="price">₹90.00</span>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- MENU section ENDS -->
+
+    <!-- REVIEW section STARTS -->
+
+    <section class="review" id="review">
+        <h3 class="sub-heading"> customer's review</h3>
+        <h1 class="heading">what they say</h1>
+
+        <div class="swiper-container reveiw-slider swiper mySwiper">
+
+            <div class="swiper-wrapper wrapper">
+
+                <div class="swiper-slide slide">
+
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="../IMG/review1.jpeg" alt="">
+                        <div class="user-info">
+                            <h3>Hitesh choudhary</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p> "The food at this restaurant is absolutely delightful! Each dish is bursting with authentic flavors and spices. A culinary journey worth experiencing.I was blown away by the hospitality and service at this restaurant. The staff was incredibly friendly and accommodating."</p>
+                </div>
+
+                <div class="swiper-slide slide">
+
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="../IMG/review2.jpeg" alt="">
+                        <div class="user-info">
+                            <h3>Prakash Balasubramanian</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p> "For years, I've savored the delectable offerings of this restaurant. The food never disappoints, always leaving me satisfied and eager to come back for another delicious meal."</p>
+                </div>
+
+                <div class="swiper-slide slide">
+
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="../IMG/review3.jpeg" alt="">
+                        <div class="user-info">
+                            <h3>Simran Srivastava</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p> "While some dishes impress, others fail to make an impact. The food is decent overall, but lacks consistency in flavor and execution. A mixed experience."</p>
+                </div>
+
+                <div class="swiper-slide slide">
+
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="../IMG/review4.jpeg" alt="">
+                        <div class="user-info">
+                            <h3>Tenzin Namgyal</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"I had high hopes, but the food fell short of expectations. The flavors lacked depth, and the presentation was uninspired. Disappointing considering the restaurant's reputation. An absolute culinary delight! The food here is a celebration of flavors, each dish crafted with precision and care."</p>
+                </div>
+
+                <div class="swiper-slide slide">
+                
+                <i class="fas fa-quote-right"></i>
+                <div class="user">
+                    <img src="../IMG/review5.jpeg" alt="">
+                    <div class="user-info">
+                        <h3>Pooja Kapoor</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <p> "The ambiance is charming, but the food fails to impress. Mediocre flavors and uninspired presentation leave much to be desired. Not worth the hype.The food quality at this restaurant is exceptional! Each dish bursts with flavor and freshness, leaving me wanting more. The hospitality was warm, and the service was prompt and attentive."</p>
+            </div>
+
+            <div class="swiper-slide slide">
+                
+                <i class="fas fa-quote-right"></i>
+                <div class="user">
+                    <img src="../IMG/review6.jpg" alt="">
+                    <div class="user-info">
+                        <h3>Nirmala Rahul Gupta</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p> "As a discerning eater, I was pleasantly surprised by the quality of food here. Every bite was bursting with flavor, and the portions were generous. A delightful dining experience."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEW section ENDS -->
+
+    <!-- ORDER section STARTS -->
+
+    <section class="order" id="order">
+        <h3 class="sub-heading"> book your tables now</h3>
+        <h1 class="heading">free and fast</h1>
+
+        <form action="">
+
+            <div class="inputBox">
+                <div class="input">
+                    <span>your name</span>
+                    <input type="text" placeholder="Enter your name..">
+                </div>
+                <div class="input">
+                    <span>your number</span>
+                    <input type="number" placeholder="Enter your number..">
+                </div>
+            </div>
+            <div class="inputBox">
+                <div class="input">
+                    <span>your order</span>
+                    <input type="text" placeholder="Enter food name..">
+                </div>
+                <div class="input">
+                    <span>additional food</span>
+                    <input type="text" placeholder="Extra with food..">
+                </div>
+            </div>
+
+            <div class="inputBox">
+                <div class="input">
+                    <span>how  many tables</span>
+                    <input type="number" placeholder="Enter no of tables you want to reserve..">
+                </div>
+                <div class="input">
+                    <span>choose date and time</span>
+                    <input type="datetime-local">
+                </div>
+            </div>
+
+            <div class="inputBox">
+                <div class="input">
+                    <span>any special arrangement you want</span>
+                    <textarea name="" placeholder="Enter your message.." id="" cols="30" rows="10"></textarea>
+                </div>
+                <div class="input">
+                    <span>any suggestion</span>
+                    <textarea name="" placeholder="Suggest here.." id="" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+            <input type="submit" value="book now" class="btn" onclick="thankYou()">
+            <h3 id="message"></h3>
+
+        </form>
+    </section>
+
+    <!-- ORDER section ENDS -->
+
+    <!-- FOOTER section STARTS -->
+
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>locations</h3>
+                <a href="">india</a>
+                <a href="#">japan</a>
+                <a href="#">russia</a>
+                <a href="#">turkey</a>
+                <a href="#">USA</a>
+            </div>
+
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="#home">home</a>
+                <a href="#dishes">dishes</a>
+                <a href="#about">about</a>
+                <a href="#review">review</a>
+                <a href="#order">order</a>
+            </div>
+
+            <div class="box">
+                <h3>contact info.</h3>
+                <a href="#">+123-456-7890</a>
+                <a href="#">+987-852-9823</a>
+                <a href="#">monkey123@gmail.com</a>
+                <a href="#">expertAsk321@gmail.com</a>
+                <a href="#">mumbai, india - 271230</a>
+            </div>
+
+            <div class="box">
+                <h3>follow us</h3>
+                <a href="https://www.instagram.com/accounts/login" target="_blank">instagram</a>
+                <a href="https://twitter.com/" target="_blank">twitter</a>
+                <a href="https://www.facebook.com" target="_blank">facebook</a>
+                <a href="https://telegram.org/" target="_blank">telegram</a>
+                <a href="https://in.linkedin.com/" target="_blank">linkedIn</a>
+            </div>
+
+        </div>
+
+        <div class="credit"> copyright &copy; www.MyOnlineMeals.com . all rights are reserved to <span>Kapoor and sons..!!</span> @2024</div>
+
+    </section>
+
+    <!-- FOOTER section ENDS -->
+
+
+
+    <!-- slider js file -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+    <!-- myown js file -->
+    <script src="../JAVASCRIPT/script.js"></script>
+
+</body>
+
+</html>
